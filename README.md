@@ -1,3 +1,10 @@
+[![Build Status](https://travis-ci.org/mvilrokx/request.svg?branch=master)](https://travis-ci.org/mvilrokx/request)
+[![Coverage Status](https://coveralls.io/repos/github/mvilrokx/request/badge.svg)](https://coveralls.io/github/mvilrokx/request)
+[![dependencies Status](https://david-dm.org/mvilrokx/request/status.svg)](https://david-dm.org/mvilrokx/request)
+[![devDependencies Status](https://david-dm.org/mvilrokx/request/dev-status.svg)](https://david-dm.org/mvilrokx/request?type=dev)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb9a3b14b0704b42a6b4530eaff126ab)](https://www.codacy.com/app/mvilrokx/request?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mvilrokx/request&amp;utm_campaign=Badge_Grade)
+[![Inline docs](http://inch-ci.org/github/mvilrokx/request.svg?branch=master)](http://inch-ci.org/github/mvilrokx/request)
+
 # Request
 Zero-dependency, pure JavaScript, promise enabled, cancelable XMLHttpRequest (i.e. Ajax)
 
