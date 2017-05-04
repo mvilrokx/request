@@ -2,7 +2,7 @@
   "name": "request",
   "version": "1.0.1",
   "description": "Very simple, very lightweight, very light-on-features API that allows you to make Ajax requests.  Uses Promises, is cancelable, has zero dependencies.",
-  "main": "index.js",
+  "main": "dist/request.js",
   "directories": {
     "test": "test"
   },
