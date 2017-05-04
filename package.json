@@ -7,6 +7,7 @@
     "test": "test"
   },
   "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "prebuild": "rm -rf ./dist",
     "build": "webpack --progress --colors",
     "watch": "npm run build -- --watch",
@@ -31,6 +32,7 @@
     "babel-register": "^6.23.0",
     "blue-tape": "^1.0.0",
     "browser-sync": "^2.18.8",
+    "coveralls": "^2.13.1",
     "eslint": "^3.16.0",
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-loader": "^1.6.3",
