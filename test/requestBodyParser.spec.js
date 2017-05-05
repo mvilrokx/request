@@ -63,6 +63,9 @@ test('application/json content type', (t) => {
     MismatchContentTypeError,
     'Raise an error when ContentType is JSON and a non-parsable Object is passed.')
 
+  t.throws(() => requestBodyParser('text/plain', 1),
+    MismatchContentTypeError,
+    'Raise an error when ContentType is text/plain and a non-String is passed.')
 
   t.test('when JSON.stringify fails to parse the passed in JSON', (assert) => {
     stub(JSON, 'stringify').onCall(0).throws()
