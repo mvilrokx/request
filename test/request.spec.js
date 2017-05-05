@@ -2,7 +2,7 @@
 import test from 'blue-tape'
 import request from '../src/lib/request'
 // import { useFakeXMLHttpRequest } from 'sinon'
-import { spy, stub, useFakeXMLHttpRequest } from 'sinon'
+import { stub, useFakeXMLHttpRequest } from 'sinon'
 import {
   BodyParsingError,
   MismatchContentTypeError,
