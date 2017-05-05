@@ -4,7 +4,8 @@ module.exports = {
     'import'
   ],
   'rules': {
-    'semi': [2, 'never']
+    'semi': [2, 'never'],
+    'import/extensions': ['off', 'never']
   },
   'env': {
     'browser': true
