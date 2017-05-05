@@ -46,7 +46,7 @@
     "minami": "^1.2.3",
     "sinon": "^1.17.7",
     "tape": "^4.6.3",
-    "webpack": "^2.2.1"
+    "webpack": "^2.5.0"
   },
   "dependencies": {}
 }

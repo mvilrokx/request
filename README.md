@@ -53,7 +53,7 @@ This will re-build the API documentation (in the ```docs``` directory).
 ## Deployment
 For usage in your projects, just install the npm module in your project and require it in your code:
 
-    $ npm install request
+    $ npm install mvilrokx/request --save
 
 Then in your code, e.g. ```index.js```
 
