@@ -7,7 +7,6 @@ import {
   BodyParsingError,
   MismatchContentTypeError,
   UnsupportedContentTypeError,
-  NetworkError,
 } from '../src/lib/errors'
 
 const setup = () => {
