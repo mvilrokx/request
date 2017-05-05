@@ -1,4 +1,4 @@
-var path = require('path')
+const path = require('path')
 
 module.exports = {
   entry: './src/index.js',
@@ -17,13 +17,13 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
           }, {
             loader: 'eslint-loader',
-            options: { fix: true }
-          }
-        ]
-      }
-    ]
-  }
+            options: { fix: true },
+          },
+        ],
+      },
+    ],
+  },
 }
