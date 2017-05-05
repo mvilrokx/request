@@ -42,7 +42,7 @@ If you want to (re)develop parts of the library yourself, you can easily re-buil
 This will watch for changes and re-build the library as you code away
 
 ## API Documentation
-The API Documentation can be found in the ```docs``` directory.
+The API Documentation can be found in the ```docs``` directory, published [here](https://mvilrokx.github.io/request/).
 
 If you want to (re)write parts of the API's documentation yourself, you can easily re-build by using:
 
@@ -71,7 +71,7 @@ request('https://htmlscraper.herokuapp.com/api/scrape', {
 }).then((data) => console.log(data)) // {"scraped":"Mark Vilrokx"}
 ```
 
-For more information, please read the docs.
+For more information, refer to [the docs](https://mvilrokx.github.io/request/).
 
 ## Built With
 * [Babel](https://babeljs.io/) - The compiler for writing next generation JavaScript
