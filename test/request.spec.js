@@ -1,8 +1,8 @@
 // import test from 'tape'
 import test from 'blue-tape'
+import { stub, useFakeXMLHttpRequest } from 'sinon'
 import request from '../src/lib/request'
 // import { useFakeXMLHttpRequest } from 'sinon'
-import { stub, useFakeXMLHttpRequest } from 'sinon'
 import {
   BodyParsingError,
   MismatchContentTypeError,
@@ -29,7 +29,7 @@ const teardown = (fixtures) => {
 test('A test with fixtures', (assert) => {
   const fixture = setup()
 
-  assert.equals(typeof fixture, 'object','fixture should return an object')
+  assert.equals(typeof fixture, 'object', 'fixture should return an object')
 
   teardown(fixture)
   assert.end()
@@ -56,12 +56,12 @@ test('A request with no options', (assert) => {
   assert.equals(
     fixture.requests[0].method,
     'GET',
-    'The default GET method is being used.'
+    'The default GET method is being used.',
   )
   assert.deepEquals(
     fixture.requests[0].requestHeaders,
-    {'content-type': 'application/x-www-form-urlencoded'},
-    'The default content-type is being used.'
+    { 'content-type': 'application/x-www-form-urlencoded' },
+    'The default content-type is being used.',
   )
   assert.equals(typeof fixture.requests[0].onload, 'function', 'onload handler is set.')
   assert.equals(typeof fixture.requests[0].onerror, 'function', 'onerror handler is set.')
@@ -76,12 +76,12 @@ test('A request with no options', (assert) => {
 test('A request with additional headers', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {headers: {'header1': 'test', 'header2': 'test'}})
+  request('http://www.example.com', { headers: { header1: 'test', header2: 'test' } })
 
   assert.deepEquals(
     fixture.requests[0].requestHeaders,
-    {'content-type': 'application/x-www-form-urlencoded', 'header1': 'test', 'header2': 'test'},
-    'The default content-type is not overwritten and additional headers are added to the request.'
+    { 'content-type': 'application/x-www-form-urlencoded', header1: 'test', header2: 'test' },
+    'The default content-type is not overwritten and additional headers are added to the request.',
   )
 
   teardown(fixture)
@@ -91,12 +91,12 @@ test('A request with additional headers', (assert) => {
 test('A request that overrides the default content-type header', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {headers: {'content-type': 'application/json'}})
+  request('http://www.example.com', { headers: { 'content-type': 'application/json' } })
 
   assert.deepEquals(
     fixture.requests[0].requestHeaders,
-    {'content-type': 'application/json'},
-    'The default content-type is overwritten.'
+    { 'content-type': 'application/json' },
+    'The default content-type is overwritten.',
   )
 
   teardown(fixture)
@@ -106,12 +106,12 @@ test('A request that overrides the default content-type header', (assert) => {
 test('A request that overrides the default content-type header AND adds more headers', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {headers: {'content-type': 'application/json', 'header1': 'test'}})
+  request('http://www.example.com', { headers: { 'content-type': 'application/json', header1: 'test' } })
 
   assert.deepEquals(
     fixture.requests[0].requestHeaders,
-    {'content-type': 'application/json', 'header1': 'test'},
-    'The default content-type is overwritten and a header is added.'
+    { 'content-type': 'application/json', header1: 'test' },
+    'The default content-type is overwritten and a header is added.',
   )
 
   teardown(fixture)
@@ -121,7 +121,7 @@ test('A request that overrides the default content-type header AND adds more hea
 test('A POST request with no data', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {method: 'POST'})
+  request('http://www.example.com', { method: 'POST' })
 
   assert.equals(fixture.requests[0].method, 'POST', 'POST method is being used.')
 
@@ -132,7 +132,7 @@ test('A POST request with no data', (assert) => {
 test('request body parsing for GET', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {body: {'ignore': 'true'}})
+  request('http://www.example.com', { body: { ignore: 'true' } })
 
   assert.equals(fixture.requests[0].requestBody, null, 'Body is ignored for GET requests.')
 
@@ -143,7 +143,7 @@ test('request body parsing for GET', (assert) => {
 test('request body parsing for POST', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {method: 'POST', body: {ignore: false}})
+  request('http://www.example.com', { method: 'POST', body: { ignore: false } })
 
   assert.equals(fixture.requests[0].requestBody, 'ignore=false', 'Body object is turned into a query string.')
 
@@ -154,7 +154,7 @@ test('request body parsing for POST', (assert) => {
 test('request body parsing for POST', (assert) => {
   const fixture = setup()
 
-  request('http://www.example.com', {method: 'POST', body: 'ignore=false'})
+  request('http://www.example.com', { method: 'POST', body: 'ignore=false' })
 
   assert.equals(fixture.requests[0].requestBody, 'ignore=false', 'Body string is left alone.')
 
@@ -168,9 +168,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: {ignore: false}
-    }
+      headers: { 'content-type': 'application/json' },
+      body: { ignore: false },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -187,8 +187,8 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'text/plain'},
-    }
+      headers: { 'content-type': 'text/plain' },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -205,9 +205,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'text/plain'},
-      body: {ignore: false}
-    }
+      headers: { 'content-type': 'text/plain' },
+      body: { ignore: false },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -224,9 +224,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'text/plain'},
-      body: {ignore: false, foo: 'bar'}
-    }
+      headers: { 'content-type': 'text/plain' },
+      body: { ignore: false, foo: 'bar' },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -243,9 +243,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'text/plain'},
-      body: 'ignore=false\r\nfoo=bar'
-    }
+      headers: { 'content-type': 'text/plain' },
+      body: 'ignore=false\r\nfoo=bar',
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -262,8 +262,8 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'application/x-www-form-urlencoded'},
-    }
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -280,9 +280,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'application/x-www-form-urlencoded'},
-      body: {ignore: false}
-    }
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: { ignore: false },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -299,9 +299,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'application/x-www-form-urlencoded'},
-      body: {ignore: false, foo: 'foo bar'}
-    }
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: { ignore: false, foo: 'foo bar' },
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -318,9 +318,9 @@ test('request body parsing for POST', (assert) => {
   request('http://www.example.com',
     {
       method: 'POST',
-      headers: {'content-type': 'application/x-www-form-urlencoded'},
-      body: 'ignore=false&foo=foo%20bar'
-    }
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body: 'ignore=false&foo=foo%20bar',
+    },
   )
 
   assert.equals(fixture.requests[0].requestBody,
@@ -339,10 +339,10 @@ test('Error Handling of request body parsing', (assert) => {
   return assert.shouldFail(
     request('http://www.example.com', {
       method: 'POST',
-      headers: {'content-type': 'not-supported'},
-      body: {ignore: false, foo: 'bar'}
+      headers: { 'content-type': 'not-supported' },
+      body: { ignore: false, foo: 'bar' },
     }).then(() => teardown(fixture)),
-    new RegExp(UnsupportedContentTypeError.message)
+    new RegExp(UnsupportedContentTypeError.message),
   )
 })
 
@@ -352,10 +352,10 @@ test('Error Handling of request body parsing when body does not match contentTyp
   return assert.shouldFail(
     request('http://www.example.com', {
       method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: 'This is a string but this should be JSON'
+      headers: { 'content-type': 'application/json' },
+      body: 'This is a string but this should be JSON',
     }).then(() => teardown(fixture)),
-    new RegExp(MismatchContentTypeError.message)
+    new RegExp(MismatchContentTypeError.message),
   )
 })
 
@@ -366,8 +366,8 @@ test('Error Handling of request body parsing when body does not match contentTyp
   return (
     request('http://www.example.com', {
       method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: 'This is a string but this should be JSON'
+      headers: { 'content-type': 'application/json' },
+      body: 'This is a string but this should be JSON',
     }).catch((rej) => {
       assert.deepEquals(rej, MismatchContentTypeError)
       teardown(fixture)
@@ -384,10 +384,9 @@ test.skip('Error Handling of failure parsing body with JSON', (assert) => {
   return (
     request('http://www.example.com', {
       method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: {foo: 'bar'}
+      headers: { 'content-type': 'application/json' },
+      body: { foo: 'bar' },
     }).catch((rej) => {
-      console.log(">> rej:", rej);
       assert.deepEquals(rej, BodyParsingError)
       JSON.stringify.restore()
       teardown(fixture)
