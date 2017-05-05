@@ -18,7 +18,7 @@ node 7.x
 ### Installing
 Clone this repository:
 
-    $ git clone https://github.com/mvilrokx/?.git
+    $ git clone https://github.com/mvilrokx/request.git
 
 (or download the zip file and unzip)
 
